@@ -1,6 +1,7 @@
 import { Editor } from "~/Editor";
 import { Generation } from "~/Generation";
 import { Router } from "~/Router";
+import { route } from "~/Util";
 
 export namespace Import {
   export const use = (image?: Generation.Image) => {
@@ -25,7 +26,7 @@ export namespace Import {
         },
       });
 
-      navigate("/edit");
+      navigate(route("/edit"));
     }, [image, createImage, createDream, navigate]);
   };
 }

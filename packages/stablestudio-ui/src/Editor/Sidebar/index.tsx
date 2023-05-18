@@ -3,6 +3,7 @@ import { Editor } from "~/Editor";
 import { Generation } from "~/Generation";
 import { Router } from "~/Router";
 import { Theme } from "~/Theme";
+import { route } from "~/Util";
 
 const tips = [
   "You can drag and drop images into the editor to import them",
@@ -58,12 +59,12 @@ export function Sidebar() {
       <App.Sidebar.Tab.Set
         name="Edit"
         position="left"
-        route="/edit"
+        route={route("/edit")}
         icon={Theme.Icon.Edit}
         bottom={bottom}
         enabled={
-          location.pathname.startsWith("/generate") ||
-          location.pathname.startsWith("/edit")
+          location.pathname.startsWith(route("/generate")) ||
+          location.pathname.startsWith(route("/edit"))
         }
         button={(props) => (
           <App.Sidebar.Tab.Button {...props} onClick={props.onClick}>
@@ -80,8 +81,8 @@ export function Sidebar() {
       </App.Sidebar.Tab.Set>
       <App.Sidebar.Tab.Set
         button={false}
-        route="/edit"
-        enabled={location.pathname.startsWith("/edit")}
+        route={route("/edit")}
+        enabled={location.pathname.startsWith(route("/edit"))}
         defaultActive
         name="Layers"
         position="right"

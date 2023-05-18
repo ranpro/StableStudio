@@ -30,5 +30,7 @@ export default defineConfig(({ mode }) => {
     },
 
     plugins: [tsconfigPaths(), react({ jsxImportSource: "@emotion/react" })],
+
+    base: `${process.env.VITE_BASE_PATH}/`
   };
 });

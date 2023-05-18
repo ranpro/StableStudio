@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Shortcut } from "~/Shortcut";
 import { Theme } from "~/Theme";
+import { route } from "~/Util";
 
 export const Right = () => {
   const { setIsOpen } = Shortcut.Palette.use();
@@ -22,7 +23,7 @@ export const Right = () => {
             <Shortcut.Keys keys={["Meta", "k"]} className="ml-2" />
           </Theme.Button>
         )}
-        <Link to="/settings">
+        <Link to={route("/settings")}>
           <Theme.Button
             outline
             label="Settings"

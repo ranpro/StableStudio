@@ -430,7 +430,8 @@ export const createPlugin = StableStudio.createPlugin<{
 
   return {
     ...functionsWhichNeedAPIKey(
-      localStorage.getItem("stability-apiKey") ?? undefined
+      localStorage.getItem("stability-apiKey") ??
+        import.meta.env.VITE_STABILITY_API_KEY
     ),
 
     getStableDiffusionStyles: () => [
@@ -534,7 +535,9 @@ export const createPlugin = StableStudio.createPlugin<{
         required: true,
         password: true,
 
-        value: localStorage.getItem("stability-apiKey") ?? "",
+        value:
+          localStorage.getItem("stability-apiKey") ??
+          import.meta.env.VITE_STABILITY_API_KEY,
       },
     },
 

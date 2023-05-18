@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useClickAway } from "react-use";
 import { Generation } from "~/Generation";
 import { Theme } from "~/Theme";
+import { route } from "~/Util";
 
 export function BottomBar() {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ export function BottomBar() {
 
   useClickAway(tabRef, () => setOpen(false));
 
-  if (!location.pathname.startsWith("/generate")) return null;
+  if (!location.pathname.startsWith(route("/generate"))) return null;
   return (
     <motion.div
       layoutId="bottom-bar-parent"

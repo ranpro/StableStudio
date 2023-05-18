@@ -4,6 +4,7 @@ import { Editor } from "~/Editor";
 import { Generation } from "~/Generation";
 import { Plugin } from "~/Plugin";
 import { Settings } from "~/Settings";
+import { route } from "~/Util";
 
 export function Router() {
   const navigate = Router.useNavigate();
@@ -14,7 +15,7 @@ export function Router() {
       ([, setting]) => (setting as any).required && !(setting as any).value
     );
 
-    isMissingRequiredSetting && navigate("/settings");
+    isMissingRequiredSetting && navigate(route("/settings"));
   }, [navigate, settings]);
 
   return <Router.Routes />;
@@ -35,20 +36,20 @@ export namespace Router {
         () =>
           [
             {
-              path: "/generate",
+              path: route("/generate"),
               element: <Generation />,
             },
             {
-              path: "/edit",
+              path: route("/edit"),
               element: <Editor />,
             },
             {
-              path: "/settings",
+              path: route("/settings"),
               element: <Settings />,
             },
             {
               path: "*",
-              element: <ReactRouter.Navigate to={`/generate`} replace />,
+              element: <ReactRouter.Navigate to={route("/generate")} replace />,
             },
           ] as const,
         []

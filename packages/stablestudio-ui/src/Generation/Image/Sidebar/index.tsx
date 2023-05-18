@@ -4,6 +4,7 @@ import { Generation } from "~/Generation";
 import { Theme } from "~/Theme";
 
 import { Advanced } from "./Advanced";
+import { route } from "~/Util";
 
 export function Sidebar() {
   const { input } = Generation.Image.Session.useCurrentInput();
@@ -15,13 +16,13 @@ export function Sidebar() {
     <App.Sidebar.Tab.Set
       defaultActive
       name="Generate"
-      route="/generate"
+      route={route("/generate")}
       position="left"
       index={0}
       icon={Theme.Icon.Generate}
       enabled={
-        location.pathname.startsWith("/generate") ||
-        location.pathname.startsWith("/edit")
+        location.pathname.startsWith(route("/generate")) ||
+        location.pathname.startsWith(route("/edit"))
       }
       bottom={
         <App.Sidebar.Tab.Bottom>
